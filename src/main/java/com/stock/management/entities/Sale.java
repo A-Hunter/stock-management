@@ -1,11 +1,15 @@
 package com.stock.management.entities;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Sale implements Serializable{
@@ -13,16 +17,17 @@ public class Sale implements Serializable{
 	@Id
 	@GeneratedValue
 	private Long idSale;
-	private String name;
+	
+	private String code;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date saleDate;
+	
+	@OneToMany(mappedBy="sale")
+	private List<SaleLine> saleLines;
 
 	public Sale() {
 		super();
-	}
-
-	public Sale(Long idSale, String name) {
-		super();
-		this.idSale = idSale;
-		this.name = name;
 	}
 
 	public Long getIdSale() {
@@ -33,14 +38,28 @@ public class Sale implements Serializable{
 		this.idSale = idSale;
 	}
 
-	public String getName() {
-		return name;
+	public String getCode() {
+		return code;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCode(String code) {
+		this.code = code;
 	}
-	
-	
+
+	public Date getSaleDate() {
+		return saleDate;
+	}
+
+	public void setSaleDate(Date saleDate) {
+		this.saleDate = saleDate;
+	}
+
+	public List<SaleLine> getSaleLines() {
+		return saleLines;
+	}
+
+	public void setSaleLines(List<SaleLine> saleLines) {
+		this.saleLines = saleLines;
+	}
 	
 }

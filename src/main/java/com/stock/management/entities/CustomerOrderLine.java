@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class CustomerOrderLine implements Serializable{
@@ -13,16 +15,17 @@ public class CustomerOrderLine implements Serializable{
 	@Id
 	@GeneratedValue
 	private Long idCustomerOrderLine;
-	private String name;
+	
+	@ManyToOne
+	@JoinColumn(name="idArticle")
+	private Article article;
+	
+	@ManyToOne
+	@JoinColumn(name="idCustomerOrder")
+	private CustomerOrder customerOrder;
 
 	public CustomerOrderLine() {
 		super();
-	}
-
-	public CustomerOrderLine(Long idCustomerOrderLine, String name) {
-		super();
-		this.idCustomerOrderLine = idCustomerOrderLine;
-		this.name = name;
 	}
 
 	public Long getIdCustomerOrderLine() {
@@ -33,13 +36,21 @@ public class CustomerOrderLine implements Serializable{
 		this.idCustomerOrderLine = idCustomerOrderLine;
 	}
 
-	public String getName() {
-		return name;
+	public Article getArticle() {
+		return article;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setArticle(Article article) {
+		this.article = article;
 	}
-	
+
+	public CustomerOrder getCustomerOrder() {
+		return customerOrder;
+	}
+
+	public void setCustomerOrder(CustomerOrder customerOrder) {
+		this.customerOrder = customerOrder;
+	}
+
 	
 }

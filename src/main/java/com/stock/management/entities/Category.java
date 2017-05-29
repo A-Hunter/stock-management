@@ -22,7 +22,11 @@ public class Category implements Serializable{
 
 	@OneToMany(mappedBy = "category")
 	private List<Article> articles;
-	
+		
+	public Category() {
+		super();
+	}
+
 	public Long getIdCategory() {
 		return idCategory;
 	}

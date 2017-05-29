@@ -1,28 +1,42 @@
 package com.stock.management.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class StockMovement implements Serializable{
 
+	public static final int INPUT = 1;
+	
+	public static final int OUTPUT = 2;
+	
 	@Id
 	@GeneratedValue
 	private Long idStockMovement;
-	private String name;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dateMovement;
+	
+	private BigDecimal quantity;
+	
+	private Integer typeMovement;
+	
+	@ManyToOne
+	@JoinColumn(name="idArticle")
+	private Article article ;
 	
 	public StockMovement() {
 		super();
-	}
-
-	public StockMovement(Long idProviderOrder, String name) {
-		super();
-		this.idStockMovement = idProviderOrder;
-		this.name = name;
 	}
 
 	public Long getIdStockMovement() {
@@ -33,13 +47,36 @@ public class StockMovement implements Serializable{
 		this.idStockMovement = idStockMovement;
 	}
 
-	public String getName() {
-		return name;
+	public Date getDateMovement() {
+		return dateMovement;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setDateMovement(Date dateMovement) {
+		this.dateMovement = dateMovement;
 	}
 
-	
+	public BigDecimal getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(BigDecimal quantity) {
+		this.quantity = quantity;
+	}
+
+	public Integer getTypeMovement() {
+		return typeMovement;
+	}
+
+	public void setTypeMovement(Integer typeMovement) {
+		this.typeMovement = typeMovement;
+	}
+
+	public Article getArticle() {
+		return article;
+	}
+
+	public void setArticle(Article article) {
+		this.article = article;
+	}
+
 }

@@ -1,11 +1,19 @@
 package com.stock.management.entities;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class CustomerOrder implements Serializable{
@@ -13,16 +21,21 @@ public class CustomerOrder implements Serializable{
 	@Id
 	@GeneratedValue
 	private Long idCustomerOrder;
-	private String name;
+	
+	private String code;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date orderDate;
+	
+	@ManyToOne
+	@JoinColumn(name="idCustomer")
+	private Customer customer;
+	
+	@OneToMany(mappedBy="customerOrder")
+	private List<CustomerOrderLine> lines;
 	
 	public CustomerOrder() {
 		super();
-	}
-
-	public CustomerOrder(Long idCustomerOrder, String name) {
-		super();
-		this.idCustomerOrder = idCustomerOrder;
-		this.name = name;
 	}
 
 	public Long getIdCustomerOrder() {
@@ -33,13 +46,36 @@ public class CustomerOrder implements Serializable{
 		this.idCustomerOrder = idCustomerOrder;
 	}
 
-	public String getName() {
-		return name;
+	public String getCode() {
+		return code;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
+	public Date getOrderDate() {
+		return orderDate;
+	}
 
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public List<CustomerOrderLine> getLines() {
+		return lines;
+	}
+
+	public void setLines(List<CustomerOrderLine> lines) {
+		this.lines = lines;
+	}
+	
 }

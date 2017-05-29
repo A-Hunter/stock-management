@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class SaleLine implements Serializable{
@@ -13,16 +15,17 @@ public class SaleLine implements Serializable{
 	@Id
 	@GeneratedValue
 	private Long idSaleLine;
-	private String name;
+	
+	@ManyToOne
+	@JoinColumn(name="idArticle")
+	private Article article;
+	
+	@ManyToOne
+	@JoinColumn(name="idSale")
+	private Sale sale;
 
 	public SaleLine() {
 		super();
-	}
-
-	public SaleLine(Long idSaleLine, String name) {
-		super();
-		this.idSaleLine = idSaleLine;
-		this.name = name;
 	}
 
 	public Long getIdSaleLine() {
@@ -33,14 +36,11 @@ public class SaleLine implements Serializable{
 		this.idSaleLine = idSaleLine;
 	}
 
-	public String getName() {
-		return name;
+	public Article getArticle() {
+		return article;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setArticle(Article article) {
+		this.article = article;
 	}
-	
-	
-
 }

@@ -20,7 +20,6 @@ public class Article implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idArticle;
 	
-	
 	private String articleCode;
 	
 	private String description;
@@ -36,6 +35,10 @@ public class Article implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="idCategory")
 	private Category category;
+
+	public Article() {
+		super();
+	}
 
 	public Long getIdArticle() {
 		return idArticle;
