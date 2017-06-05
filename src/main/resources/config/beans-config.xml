@@ -62,5 +62,9 @@
 	<bean id="saleService" class="com.stock.management.services.impl.SaleServiceImpl">
 		<property name="dao" ref="saleDao"></property>
 	</bean>
-	
+
+	<bean id="flickrDao" class="com.stock.management.dao.impl.FlickrDAOImpl" />
+	<bean id="flickrService" class="com.stock.management.services.impl.FlickrServiceImpl">
+		<property name="dao" ref="flickrDao"></property>
+	</bean>	
 </beans>
