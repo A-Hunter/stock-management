@@ -19,13 +19,13 @@ public class ArticleServiceImpl implements ArticleService{
 	}
 
 	@Override
-	public Article save(Article entity) {
-		return dao.save(entity);
+	public Article save(Article article) {
+		return dao.save(article);
 	}
 
 	@Override
-	public Article update(Article entity) {
-		return dao.update(entity);
+	public Article update(Article article) {
+		return dao.update(article);
 	}
 
 	@Override

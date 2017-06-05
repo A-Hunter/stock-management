@@ -7,4 +7,60 @@
 	<bean id="articleService" class="com.stock.management.services.impl.ArticleServiceImpl">
 		<property name="dao" ref="articleDao"></property>
 	</bean>
+	
+	<bean id="categoryDao" class="com.stock.management.dao.impl.CatogoryDAOImpl" />
+	<bean id="categoryService" class="com.stock.management.services.impl.CategoryServiceImpl">
+		<property name="dao" ref="categoryDao"></property>
+	</bean>
+	
+	<bean id="customerDao" class="com.stock.management.dao.impl.CustomerDAOImpl" />
+	<bean id="CustomerService" class="com.stock.management.services.impl.CustomerServiceImpl">
+		<property name="dao" ref="customerDao"></property>
+	</bean>
+	
+	<bean id="customerOrderDao" class="com.stock.management.dao.impl.CustomerOrderDAOImpl" />
+	<bean id="customerOrderService" class="com.stock.management.services.impl.CustomerOrderServiceImpl">
+		<property name="dao" ref="customerOrderDao"></property>
+	</bean>
+	
+	<bean id="providerOrderDao" class="com.stock.management.dao.impl.ProviderOrderDAOImpl" />
+	<bean id="providerOrderService" class="com.stock.management.services.impl.ProviderOrderServiceImpl">
+		<property name="dao" ref="providerOrderDao"></property>
+	</bean>
+		
+	<bean id="providerDao" class="com.stock.management.dao.impl.ProviderDAOImpl" />
+	<bean id="providerService" class="com.stock.management.services.impl.ProviderServiceImpl">
+		<property name="dao" ref="providerDao"></property>
+	</bean>
+	
+	<bean id="customerOrderLineDao" class="com.stock.management.dao.impl.CustomerOrderLineDAOImpl" />
+	<bean id="customerOrderLineService" class="com.stock.management.services.impl.CustomerOrderLineServiceImpl">
+		<property name="dao" ref="customerOrderLineDao"></property>
+	</bean>
+
+	<bean id="providerOrderLineDao" class="com.stock.management.dao.impl.ProviderOrderLineDAOImpl" />
+	<bean id="providerOrderLineService" class="com.stock.management.services.impl.ProviderOrderLineServiceImpl">
+		<property name="dao" ref="providerOrderLineDao"></property>
+	</bean>
+	
+	<bean id="saleLineDao" class="com.stock.management.dao.impl.SaleLineDAOImpl" />
+	<bean id="saleLineService" class="com.stock.management.services.impl.SaleLineServiceImpl">
+		<property name="dao" ref="saleLineDao"></property>
+	</bean>
+	
+	<bean id="stockMovementDao" class="com.stock.management.dao.impl.StockMovementDAOImpl" />
+	<bean id="stockMovementService" class="com.stock.management.services.impl.StockMovementServiceImpl">
+		<property name="dao" ref="stockMovementDao"></property>
+	</bean>
+	
+	<bean id="userDao" class="com.stock.management.dao.impl.UserDAOImpl" />
+	<bean id="userService" class="com.stock.management.services.impl.UserServiceImpl">
+		<property name="dao" ref="userDao"></property>
+	</bean>
+	
+	<bean id="saleDao" class="com.stock.management.dao.impl.SaleDAOImpl" />
+	<bean id="saleService" class="com.stock.management.services.impl.SaleServiceImpl">
+		<property name="dao" ref="saleDao"></property>
+	</bean>
+	
 </beans>
